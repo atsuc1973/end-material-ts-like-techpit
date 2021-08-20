@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Typography } from "@material-ui/core";
 
-import Basic from "./Basic";
+import ProductMaterial from "./ProductMaterial";
 import useStyles from "./styles";
 
 const StockEndMaterial = () => {
@@ -17,7 +17,7 @@ const StockEndMaterial = () => {
       >
         原料特定
       </Typography>
-      <Basic />
+      <ProductMaterial />
     </Container>
   );
 };

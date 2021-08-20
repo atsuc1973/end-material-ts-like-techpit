@@ -19,6 +19,5 @@ export const searchMaterialProductCode = (code: string) => async (
     gradeColor: result.grade_color
     
   };
-
   dispach(stockEndMaterialActions.searchMaterial.done({ result: material, params: {} }));
 };

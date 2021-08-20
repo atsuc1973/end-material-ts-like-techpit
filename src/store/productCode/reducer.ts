@@ -6,6 +6,8 @@ const init: ProductCode = {
   product_code: "",
 };
 
+
+
 const productCodeReducer = reducerWithInitialState(init)
 .case(productCodeActions.setProductCode,(state, payload) => ({
     ...state,
