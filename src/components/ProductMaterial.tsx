@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
+import { useForm, Controller } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { TextField } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
@@ -11,11 +12,20 @@ import { STOCK_END_MATERIAL } from "../domain/service/stockEndMaterial";
 import stockEndMaterialActions from "../store/stockEndMaterial/actions";
 import productCodeActions from "../store/productCode/actions";
 
+
 // import { isProductCode } from "../domain/service/productCode";
 
 import { searchMaterialProductCode } from "../store/stockEndMaterial/effects";
 
 const ProductMaterial = () => {
+  const UserInputData = React.createContext<undefined>(undefined);
+
+  const { control, handleSubmit } = useForm({
+    defaultValues: {
+        textBox: "",
+    },
+  });
+  // const { currentState, setCurrentState } = useContext(UserInputData);
 
   const [data, setData] = useState([]);
 
@@ -43,16 +53,22 @@ const ProductMaterial = () => {
 
   return (
     <>
-      <Autocomplete
-        id="free-solo-demo"
-        freeSolo
-        options={data.map((option: any) => option.product_code)}
-        value = {productCode.product_code}
-        onChange={(event, value)=>handleProductCodeChange(value)}
-        renderInput={(params) => (
-          <TextField {...params} label={STOCK_END_MATERIAL.PRODUCT_CODE}  margin="normal" variant="outlined" />
+      <Controller
+        control={control}
+        name="textBox"
+        render={({ field }) => (
+            <Autocomplete
+            {...field}
+              id="free-solo-demo"
+              freeSolo
+              options={data.map((option: any) => option.product_code)}
+              value = {productCode.product_code}
+              onChange={(event, value)=>handleProductCodeChange(value)}
+              renderInput={(params) => (
+                <TextField {...params} label={STOCK_END_MATERIAL.PRODUCT_CODE}  margin="normal" variant="outlined" />
+              )}
+            />
         )}
-
       />
       <TextField 
         fullWidth 
