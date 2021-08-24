@@ -1,4 +1,4 @@
-export const STOCK_END_MATERIAL = {
+export const END_MATERIAL = {
   MATERIAL: "原料グレード・カラー",
   LOTNUM: "ロットNO.",
   PRODUCT_CODE: "品番",

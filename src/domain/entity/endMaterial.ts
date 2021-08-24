@@ -1,6 +1,6 @@
 import { Material } from "./material";
 
-export type StockEndMaterial = {
+export type EndMaterial = {
   material: Material;
   lotNum: string;
   typeEndMaterial: number;

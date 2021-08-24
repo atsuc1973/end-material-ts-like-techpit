@@ -1,11 +1,11 @@
 import React  from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { MenuItem, TextField, Select, InputLabel } from "@material-ui/core";
-import { STOCK_END_MATERIAL } from "../domain/service/stockEndMaterial";
+import { END_MATERIAL } from "../domain/service/endMaterial";
 import useStyles from "./styles";
 import { RootState } from "../domain/entity/rootState";
-import { StockEndMaterial } from "../domain/entity/stockEndMaterial";
-import stockEndMaterialActions from "../store/stockEndMaterial/actions";
+import { EndMaterial } from "../domain/entity/endMaterial";
+import endMaterialActions from "../store/endMaterial/actions";
 
 const arrTypeEndMaterials = [
   {id:　0, name: 'バージン'},
@@ -13,20 +13,20 @@ const arrTypeEndMaterials = [
   {id: 2, name: 'バージン＋粉砕'}
 ] 
 
-const FormStockEndMaterial = () => {
+const FormEndMaterial = () => {
 
-  const stockEndMaterial = useSelector((state: RootState) => state.stockEndMaterial); //storeから状態を参照
+  const endMaterial = useSelector((state: RootState) => state.endMaterial); //storeから状態を参照
   const productCode = useSelector((state: RootState) => state.productCode);
   const classes = useStyles();
 
   const dispatch = useDispatch();
 
-  const handleChangeTypeEndMaterial = (member: Partial<StockEndMaterial>) => {
-    dispatch(stockEndMaterialActions.setStockEndMaterial(member));
+  const handleChangeTypeEndMaterial = (member: Partial<EndMaterial>) => {
+    dispatch(endMaterialActions.setEndMaterial(member));
   };
 
-  const handleChangeAmount = (member: Partial<StockEndMaterial>) => {
-    dispatch(stockEndMaterialActions.setStockEndMaterial(member));
+  const handleChangeAmount = (member: Partial<EndMaterial>) => {
+    dispatch(endMaterialActions.setEndMaterial(member));
   };
 
   return (
@@ -36,7 +36,7 @@ const FormStockEndMaterial = () => {
       <TextField 
         fullWidth
         variant="outlined"
-        label={STOCK_END_MATERIAL.PRODUCT_CODE} 
+        label={END_MATERIAL.PRODUCT_CODE} 
         value={productCode.product_code}
         InputProps={{
           readOnly: true,
@@ -47,17 +47,17 @@ const FormStockEndMaterial = () => {
       <TextField
         fullWidth
         variant="outlined"
-        label={STOCK_END_MATERIAL.MATERIAL} 
-        value={stockEndMaterial.material.gradeColor}
+        label={END_MATERIAL.MATERIAL} 
+        value={endMaterial.material.gradeColor}
         InputProps={{
           readOnly: true,
         }}
       />
       <br />
       <br />
-      <InputLabel>{STOCK_END_MATERIAL.TYPE_END_MATERIAL}</InputLabel>
+      <InputLabel>{END_MATERIAL.TYPE_END_MATERIAL}</InputLabel>
       <Select
-        value={stockEndMaterial.typeEndMaterial}
+        value={endMaterial.typeEndMaterial}
         onChange={e=>
           handleChangeTypeEndMaterial({typeEndMaterial: e.target.value as number})
         }
@@ -76,17 +76,17 @@ const FormStockEndMaterial = () => {
       <TextField 
         fullWidth 
         className={classes.formField} 
-        label={STOCK_END_MATERIAL.AMOUNT} 
+        label={END_MATERIAL.AMOUNT} 
         variant="outlined"
         // inputProps={{disabled: true}}
-        value = {stockEndMaterial.amount}
+        value = {endMaterial.amount}
         onChange={e=>
           handleChangeAmount({amount: Number(e.target.value)})
         }
       />
-      <div>{stockEndMaterial.amount}</div>
+      <div>{endMaterial.amount}</div>
     </>
   )
 }
 
-export default FormStockEndMaterial;
+export default FormEndMaterial;

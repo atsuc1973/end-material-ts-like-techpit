@@ -1,7 +1,7 @@
-import { StockEndMaterial } from "./stockEndMaterial";
+import { EndMaterial } from "./endMaterial";
 import { ProductCode }  from "./productCode";
 
 export type RootState = {
-  stockEndMaterial: StockEndMaterial;
+  endMaterial: EndMaterial;
   productCode: ProductCode;
 };

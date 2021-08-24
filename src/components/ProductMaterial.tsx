@@ -9,13 +9,13 @@ import useStyles from "./styles";
 import { RootState } from "../domain/entity/rootState";
 
 import { Material } from "../domain/entity/material"
-import { STOCK_END_MATERIAL } from "../domain/service/stockEndMaterial";
-import stockEndMaterialActions from "../store/stockEndMaterial/actions";
+import { END_MATERIAL } from "../domain/service/endMaterial";
+import endMaterialActions from "../store/endMaterial/actions";
 import productCodeActions from "../store/productCode/actions";
 
 // import { isProductCode } from "../domain/service/productCode";
 
-import { searchMaterialProductCode } from "../store/stockEndMaterial/effects";
+import { searchMaterialProductCode } from "../store/endMaterial/effects";
 
 const ProductMaterial = () => {
 
@@ -28,13 +28,13 @@ const ProductMaterial = () => {
   },[]);
  
   const dispatch = useDispatch();
-  const stockEndMaterial = useSelector((state: RootState) => state.stockEndMaterial); //storeから状態を参照
+  const endMaterial = useSelector((state: RootState) => state.endMaterial); //storeから状態を参照
   const productCode = useSelector((state: RootState) => state.productCode);
   const classes = useStyles();
 
   const handleChange 
   = (member: Partial<Material>) => {
-    dispatch(stockEndMaterialActions.setMaterial(member));
+    dispatch(endMaterialActions.setMaterial(member));
   };
 
   const handleProductCodeChange = (code: string) => {
@@ -53,17 +53,17 @@ const ProductMaterial = () => {
         value = {productCode.product_code}
         onChange={(event, value)=>handleProductCodeChange(value)}
         renderInput={(params) => (
-          <TextField {...params} label={STOCK_END_MATERIAL.PRODUCT_CODE}  margin="normal" variant="outlined" />
+          <TextField {...params} label={END_MATERIAL.PRODUCT_CODE}  margin="normal" variant="outlined" />
         )}
 
       />
       <TextField 
         fullWidth 
         className={classes.formField} 
-        label={STOCK_END_MATERIAL.MATERIAL} 
+        label={END_MATERIAL.MATERIAL} 
         variant="outlined"
         inputProps={{disabled: true}}
-        value = {stockEndMaterial.material.gradeColor}
+        value = {endMaterial.material.gradeColor}
         onChange={e=>handleChange({gradeColor: e.target.value})}
       />
       <div>
@@ -71,13 +71,13 @@ const ProductMaterial = () => {
           variant="contained"
           color="primary"
           component={Link}
-          to="/formStockEndMaterial"
+          to="/formEndMaterial"
         >
           フォームページへ
         </Button>
       </div>
       <div>{productCode.product_code}</div>
-      <div>{stockEndMaterial.material.gradeColor}</div> 
+      <div>{endMaterial.material.gradeColor}</div> 
     </>
   )
 }

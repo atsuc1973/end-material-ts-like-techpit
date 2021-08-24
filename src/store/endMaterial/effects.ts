@@ -1,5 +1,5 @@
 import { Dispatch } from "redux";
-import stockEndMaterialActions from "./actions";
+import endMaterialActions from "./actions";
 import { Material } from "../../domain/entity/material";
 
 import {
@@ -19,5 +19,5 @@ export const searchMaterialProductCode = (code: string) => async (
     gradeColor: result.grade_color
     
   };
-  dispach(stockEndMaterialActions.searchMaterial.done({ result: material, params: {} }));
+  dispach(endMaterialActions.searchMaterial.done({ result: material, params: {} }));
 };

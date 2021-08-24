@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 import { Container, Typography } from "@material-ui/core";
 import ProductMaterial from "./ProductMaterial";
-import FormStockEndMaterial from "./FormStockEndMaterial";
+import FormEndMaterial from "./FormEndMaterial";
 import useStyles from "./styles";
 
 const Base = () => {
@@ -20,7 +20,7 @@ const Base = () => {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={ProductMaterial} />
-          <Route exact path="/formStockEndMaterial" component={FormStockEndMaterial} />
+          <Route exact path="/formEndMaterial" component={FormEndMaterial} />
         </Switch>
       </BrowserRouter>
     </Container>
