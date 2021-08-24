@@ -3,5 +3,5 @@ export const STOCK_END_MATERIAL = {
   LOTNUM: "ロットNO.",
   PRODUCT_CODE: "品番",
   TYPE_END_MATERIAL: "端材種類",
-  amount: "数量" 
+  AMOUNT: "数量" 
 }

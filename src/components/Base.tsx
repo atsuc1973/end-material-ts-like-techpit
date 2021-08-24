@@ -1,10 +1,11 @@
 import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom"
 import { Container, Typography } from "@material-ui/core";
-
 import ProductMaterial from "./ProductMaterial";
+import FormStockEndMaterial from "./FormStockEndMaterial";
 import useStyles from "./styles";
 
-const StockEndMaterial = () => {
+const Base = () => {
   const classes = useStyles();
 
   return (
@@ -15,12 +16,16 @@ const StockEndMaterial = () => {
         className={classes.title}
         color="primary"
       >
-        原料特定
       </Typography>
-      <ProductMaterial />
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={ProductMaterial} />
+          <Route exact path="/formStockEndMaterial" component={FormStockEndMaterial} />
+        </Switch>
+      </BrowserRouter>
     </Container>
   );
 };
 
-export default StockEndMaterial;
+export default Base;
 

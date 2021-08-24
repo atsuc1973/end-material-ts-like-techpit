@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { TextField } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
+import { Button } from "@material-ui/core";
 
 import useStyles from "./styles";
 import { RootState } from "../domain/entity/rootState";
@@ -43,6 +45,7 @@ const ProductMaterial = () => {
 
   return (
     <>
+      原料特定
       <Autocomplete
         id="free-solo-demo"
         freeSolo
@@ -63,6 +66,16 @@ const ProductMaterial = () => {
         value = {stockEndMaterial.material.gradeColor}
         onChange={e=>handleChange({gradeColor: e.target.value})}
       />
+      <div>
+        <Button
+          variant="contained"
+          color="primary"
+          component={Link}
+          to="/formStockEndMaterial"
+        >
+          フォームページへ
+        </Button>
+      </div>
       <div>{productCode.product_code}</div>
       <div>{stockEndMaterial.material.gradeColor}</div> 
     </>

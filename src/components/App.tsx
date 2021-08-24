@@ -1,11 +1,16 @@
 import React from 'react';
-import StockEndMaterial from './StockEndMaterials';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Base from './Base';
+// import ProductMaterial from './ProductMaterial';
 
 function App() {
   return (
-    <>
-      <StockEndMaterial />
-    </>
+    <BrowserRouter>
+      <Switch>
+      <Route exact path="/" component={Base} />
+
+      </Switch>
+    </BrowserRouter>
   );
 }
 
